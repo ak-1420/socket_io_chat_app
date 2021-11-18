@@ -8,6 +8,8 @@ const http = require('http')
 
 const {Server} = require('socket.io')
 
+const port = process.env.PORT || 3001
+
 app.use(cors())
 
 const server =  http.createServer(app);
@@ -39,7 +41,11 @@ io.on('connection',(socket) => {
 
 })
 
+app.get('/' ,(req , res) => {
+    res.send('<h1>One to One Chat Server</h1>')
+})
 
-server.listen(3001 , () => {
-    console.log('server running')
+
+server.listen(port, () => {
+    console.log(`server running on port ${port}`)
 })
